@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz: Como está sua jornada com Deus?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="badge">QUIZ</div>
+      <h1>Como está sua jornada com Deus hoje?</h1>
+      <p class="sub">
+        Responda em 2 min e receba seu perfil + um caminho prático para fortalecer sua fé.
+      </p>
+    </header>
+
+    <!-- START -->
+    <section id="screen-start" class="card">
+      <h2>Antes de começar…</h2>
+      <p class="muted">
+        Esse quiz é rápido e foi feito para te orientar com amor e direção. ❤️
+      </p>
+
+      <div class="form">
+        <label>
+          Seu nome (opcional)
+          <input id="name" type="text" placeholder="Ex.: Antoni" />
+        </label>
+
+        <label>
+          WhatsApp (opcional)
+          <input id="phone" type="tel" placeholder="(11) 99999-9999" />
+        </label>
+      </div>
+
+      <button id="btnStart" class="btn primary">Começar agora</button>
+      <p class="tiny muted">Ao continuar, você concorda em receber seu resultado na tela.</p>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screen-quiz" class="card hidden">
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="qhead">
+        <div class="qcount" id="qCount">Pergunta 1 de 8</div>
+        <div class="qtitle" id="qTitle">Pergunta</div>
+      </div>
+
+      <div id="answers" class="answers"></div>
+
+      <div class="nav">
+        <button id="btnBack" class="btn ghost">Voltar</button>
+        <button id="btnNext" class="btn primary" disabled>Próximo</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screen-result" class="card hidden">
+      <div class="result-top">
+        <div class="pill" id="resultPill">Seu perfil</div>
+        <h2 id="resultTitle">Resultado</h2>
+        <p id="resultDesc" class="sub"></p>
+      </div>
+
+      <div class="grid">
+        <div class="box">
+          <h3>Seu resumo</h3>
+          <ul id="resultBullets" class="list"></ul>
+        </div>
+        <div class="box">
+          <h3>Próximo passo (prático)</h3>
+          <p id="resultNext" class="muted"></p>
+          <div class="verse" id="resultVerse"></div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h3>Quer um plano pronto pra 30 dias?</h3>
+        <p class="muted">
+          No eBook você recebe devocionais curtos, oração guiada e checklists diários para manter constância.
+        </p>
+
+        <button id="btnWhats" class="btn primary">Quero o eBook agora</button>
+        <button id="btnRestart" class="btn ghost">Refazer quiz</button>
+
+        <p class="tiny muted" id="saveNote"></p>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p class="tiny muted">© <span id="year"></span> • Quiz cristão • Feito para edificar</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
