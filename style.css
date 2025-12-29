@@ -1,7 +1,5 @@
 :root{
   --bg:#0b1220;
-  --card:#0f1a2e;
-  --card2:#101f38;
   --text:#eaf0ff;
   --muted:#b9c6e8;
   --line:rgba(255,255,255,.10);
@@ -11,29 +9,52 @@
   --shadow: 0 18px 45px rgba(0,0,0,.35);
   --radius:18px;
   --pad:18px;
-  font-synthesis-weight:none;
 }
 
-*{box-sizing:border-box}
-html,body{height:100%}
+/* =========================
+   RESET / BASE
+========================= */
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  height:100%;
+}
+
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background: radial-gradient(1200px 800px at 20% 0%, rgba(110,168,255,.18), transparent 60%),
-              radial-gradient(1200px 800px at 100% 30%, rgba(138,214,255,.15), transparent 55%),
-              var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 800px at 20% 0%, rgba(110,168,255,.18), transparent 60%),
+    radial-gradient(1200px 800px at 100% 30%, rgba(138,214,255,.15), transparent 55%),
+    var(--bg);
   color:var(--text);
+
+  min-height:100dvh;
+  display:flex;
+  justify-content:center;
 }
 
+/* =========================
+   CONTAINER
+========================= */
 .wrap{
-  width:min(920px, 92vw);
-  margin: 26px auto 40px;
+  width:100%;
+  max-width:920px;
+  margin:26px auto 40px;
+  padding:0 14px;
 }
 
+/* =========================
+   TOPO
+========================= */
 .top{
   text-align:center;
-  margin: 18px 0 18px;
+  margin:18px 0;
 }
+
 .badge{
   display:inline-flex;
   padding:6px 10px;
@@ -44,47 +65,79 @@ body{
   color:var(--muted);
   background: rgba(255,255,255,.04);
 }
+
 h1{
-  margin: 10px 0 8px;
+  margin:10px 0 8px;
   font-size: clamp(24px, 4vw, 38px);
 }
-.sub{color:var(--muted); margin:0 auto; max-width: 62ch; line-height:1.45}
 
+.sub{
+  color:var(--muted);
+  margin:0 auto;
+  max-width:62ch;
+  line-height:1.45;
+}
+
+/* =========================
+   CARD
+========================= */
 .card{
   background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
   border:1px solid var(--line);
   border-radius: var(--radius);
   padding: var(--pad);
   box-shadow: var(--shadow);
+
+  width:100%;
+  max-width:860px;
+  margin:0 auto;
+  overflow:hidden;
 }
 
-.hidden{display:none}
+.hidden{ display:none; }
 
+/* =========================
+   FORM
+========================= */
 .form{
   display:grid;
   gap:12px;
-  margin: 14px 0 14px;
+  margin:14px 0;
 }
-label{display:grid; gap:8px; color:var(--muted); font-size:14px}
+
+label{
+  display:grid;
+  gap:8px;
+  color:var(--muted);
+  font-size:14px;
+}
+
 input{
   width:100%;
-  padding:12px 12px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--line);
   background: rgba(0,0,0,.18);
-  color: var(--text);
+  color:var(--text);
   outline:none;
 }
-input:focus{border-color: rgba(110,168,255,.55)}
 
+input:focus{
+  border-color: rgba(110,168,255,.55);
+}
+
+/* =========================
+   PROGRESS
+========================= */
 .progress{
   height:10px;
   border-radius:999px;
   background: rgba(255,255,255,.07);
   overflow:hidden;
   border:1px solid var(--line);
-  margin-bottom: 14px;
+  margin-bottom:14px;
 }
+
 .progress-bar{
   height:100%;
   width:0%;
@@ -92,36 +145,79 @@ input:focus{border-color: rgba(110,168,255,.55)}
   transition: width .25s ease;
 }
 
-.qhead{display:grid; gap:8px; margin-bottom: 10px}
-.qcount{color:var(--muted); font-size:13px}
-.qtitle{font-size: 20px; font-weight: 700; line-height:1.25}
+/* =========================
+   PERGUNTAS
+========================= */
+.qhead{
+  display:grid;
+  gap:8px;
+  margin-bottom:10px;
+}
 
+.qcount{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.qtitle{
+  font-size:20px;
+  font-weight:700;
+  line-height:1.25;
+}
+
+/* =========================
+   ANSWERS — FIX DEFINITIVO iOS
+========================= */
 .answers{
+  width:100%;
   display:grid;
   gap:10px;
-  margin: 14px 0 18px;
+  margin:14px 0 18px;
 }
+
 .answer{
+  width:100%;
   display:flex;
   align-items:flex-start;
-  gap:10px;
-  padding:12px 12px;
-  border-radius: 14px;
+  gap:12px;
+  padding:14px;
+  border-radius:14px;
   border:1px solid var(--line);
   background: rgba(0,0,0,.15);
   cursor:pointer;
-  transition: transform .08s ease, border-color .15s ease, background .15s ease;
+
+  overflow:hidden; /* evita vazamento */
 }
+
 .answer:hover{
-  transform: translateY(-1px);
   border-color: rgba(110,168,255,.45);
 }
-.answer input{margin-top:3px}
+
 .answer.selected{
-  border-color: rgba(110,168,255,.80);
+  border-color: rgba(110,168,255,.8);
   background: rgba(110,168,255,.10);
 }
 
+/* radio */
+.answer input{
+  flex:0 0 22px;
+  min-width:22px;
+  margin-top:4px;
+}
+
+/* texto — ESSENCIAL */
+.answer > div{
+  flex:1 1 auto;
+  min-width:0;              /* FIX SAFARI */
+  text-align:left;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
+/* =========================
+   NAV
+========================= */
 .nav{
   display:flex;
   justify-content:space-between;
@@ -129,77 +225,135 @@ input:focus{border-color: rgba(110,168,255,.55)}
   flex-wrap:wrap;
 }
 
+/* =========================
+   BOTÕES
+========================= */
 .btn{
   border:none;
-  border-radius: 14px;
-  padding: 12px 14px;
-  font-weight: 700;
+  border-radius:14px;
+  padding:12px 14px;
+  font-weight:700;
   cursor:pointer;
   color: var(--text);
   background: rgba(255,255,255,.06);
   border:1px solid var(--line);
 }
-.btn:disabled{opacity:.45; cursor:not-allowed}
+
+.btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
 .btn.primary{
   background: linear-gradient(90deg, var(--primary), var(--primary2));
-  color: #07101f;
-  border: none;
+  color:#07101f;
+  border:none;
 }
+
 .btn.ghost{
   background: transparent;
 }
 
-.tiny{font-size:12px}
-.muted{color:var(--muted)}
+/* =========================
+   RESULT
+========================= */
+.result-top{
+  display:grid;
+  gap:8px;
+  text-align:center;
+  margin-bottom:12px;
+}
 
-.result-top{display:grid; gap:8px; text-align:center; margin-bottom: 12px}
 .pill{
   display:inline-flex;
-  margin: 0 auto;
-  padding: 6px 12px;
+  margin:0 auto;
+  padding:6px 12px;
   border-radius:999px;
   border:1px solid var(--line);
   background: rgba(255,255,255,.04);
-  color: var(--ok);
+  color:var(--ok);
   font-weight:800;
 }
 
 .grid{
   display:grid;
-  grid-template-columns: 1fr;
+  grid-template-columns:1fr;
   gap:12px;
-  margin: 14px 0 14px;
+  margin:14px 0;
 }
-@media (min-width: 820px){
-  .grid{grid-template-columns: 1fr 1fr}
+
+@media (min-width:820px){
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
 .box{
   border:1px solid var(--line);
   background: rgba(0,0,0,.14);
-  border-radius: 16px;
-  padding: 14px;
+  border-radius:16px;
+  padding:14px;
 }
-.box h3{margin:0 0 10px}
-.list{margin:0; padding-left: 18px; color: var(--muted)}
-.list li{margin: 6px 0}
+
+.list{
+  margin:0;
+  padding-left:18px;
+  color:var(--muted);
+}
+
+.list li{
+  margin:6px 0;
+}
 
 .verse{
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: 14px;
+  margin-top:12px;
+  padding:12px;
+  border-radius:14px;
   border:1px dashed rgba(255,255,255,.22);
   background: rgba(255,255,255,.03);
-  color: var(--text);
   line-height:1.5;
 }
 
+/* =========================
+   CTA
+========================= */
 .cta{
-  margin-top: 12px;
+  margin-top:12px;
   text-align:center;
-  padding: 14px;
-  border-radius: 16px;
+  padding:14px;
+  border-radius:16px;
   border:1px solid rgba(110,168,255,.25);
   background: rgba(110,168,255,.08);
 }
-.foot{margin-top: 14px; text-align:center}
+
+/* =========================
+   TEXTOS
+========================= */
+.tiny{ font-size:12px; }
+.muted{ color:var(--muted); }
+
+/* =========================
+   FOOTER
+========================= */
+.foot{
+  margin-top:14px;
+  text-align:center;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width:420px){
+  .qtitle{
+    font-size:18px;
+  }
+
+  .nav{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .btn{
+    width:100%;
+  }
+}
