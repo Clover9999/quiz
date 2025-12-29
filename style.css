@@ -28,9 +28,9 @@ body{
     var(--bg);
   color:var(--text);
 
-  /* ✅ FIX SAFARI/iOS: impede o aumento automático de texto que “quebra” o layout */
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  /* FIX iOS text resize */
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
 
   min-height:100dvh;
   display:flex;
@@ -44,9 +44,12 @@ body{
   width:100%;
   max-width:920px;
   margin:26px auto 40px;
-  padding:0 14px;
+  padding:0 14px 24px; /* espaço final evita faixa visual */
 }
 
+/* =========================
+   TOPO
+========================= */
 .top{
   text-align:center;
   margin:18px 0;
@@ -79,7 +82,11 @@ h1{
    CARD
 ========================= */
 .card{
-  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.045),
+    rgba(255,255,255,.02)
+  );
   border:1px solid var(--line);
   border-radius: var(--radius);
   padding: var(--pad);
@@ -88,7 +95,6 @@ h1{
   width:100%;
   max-width:860px;
   margin:0 auto;
-
   overflow:hidden;
 }
 
@@ -164,34 +170,29 @@ input:focus{
 }
 
 /* =========================
-   ANSWERS (FIX DEFINITIVO iOS)
+   ANSWERS — FIX iOS
 ========================= */
 .answers{
   width:100%;
   display:grid;
   gap:10px;
   margin:14px 0 18px;
-
-  /* ✅ evita comportamento estranho de shrink em alguns iPhones */
   min-width:0;
 }
 
 .answer{
   width:100%;
   max-width:100%;
-
   display:flex;
   align-items:flex-start;
   gap:12px;
-
   padding:14px;
   border-radius:14px;
   border:1px solid var(--line);
   background: rgba(0,0,0,.15);
   cursor:pointer;
-
   overflow:hidden;
-  min-width:0; /* ✅ importante no Safari */
+  min-width:0;
 }
 
 .answer:hover{
@@ -203,27 +204,21 @@ input:focus{
   background: rgba(110,168,255,.10);
 }
 
-/* radio */
 .answer input{
   flex:0 0 22px;
   min-width:22px;
   margin-top:4px;
 }
 
-/* texto */
 .answer > div{
-  flex: 1 1 0;       /* ✅ base 0 evita “coluna” no Safari */
-  min-width: 0;      /* ✅ ESSENCIAL */
-  width: 100%;
-  max-width: 100%;
-
-  display:block;
-  text-align:left;
+  flex:1 1 0;
+  min-width:0;
+  width:100%;
+  max-width:100%;
   line-height:1.45;
-
-  white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 
 /* =========================
@@ -322,20 +317,33 @@ input:focus{
 }
 
 /* =========================
-   CTA
+   CTA — AZUL SEM SOBREPOR
 ========================= */
 .cta{
-  margin-top:12px;
+  margin-top:14px;
   text-align:center;
-  padding:14px;
+  padding:16px;
   border-radius:16px;
-  border:1px solid rgba(110,168,255,.25);
-  background: rgba(110,168,255,.08);
+
+  background: linear-gradient(
+    180deg,
+    rgba(110,168,255,.10),
+    rgba(110,168,255,.05)
+  );
+  border:1px solid rgba(110,168,255,.18);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
 }
 
+/* =========================
+   TEXTOS
+========================= */
 .tiny{ font-size:12px; }
 .muted{ color:var(--muted); }
 
+/* =========================
+   FOOTER
+========================= */
 .foot{
   margin-top:14px;
   text-align:center;
